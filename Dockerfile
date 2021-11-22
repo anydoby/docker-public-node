@@ -1,4 +1,4 @@
-FROM openjdk:11-jre-slim
+FROM openjdk:11-jdk
 ENV LTO_LOG_LEVEL="INFO"
 ENV LTO_HEAP_SIZE="2g"
 ENV LTO_CONFIG_FILE="/lto/configs/lto-config.conf"
@@ -7,7 +7,7 @@ ENV LTO_CONFIG_FILE="/lto/configs/lto-config.conf"
 RUN apt-get update -y && apt-get install -y python3 \
     python3-pip curl \
   && ln -s /usr/bin/python3 python \
-  && pip3 install --upgrade pip && apt install libleveldb-java libleveldb-api-java
+  && pip3 install --upgrade pip && apt install -y libleveldb-java libleveldb-api-java
 
 RUN pip3 install requests pyhocon pywaves==0.8.19 tqdm
 
